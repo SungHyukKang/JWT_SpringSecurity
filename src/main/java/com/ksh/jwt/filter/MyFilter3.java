@@ -33,8 +33,6 @@ public class MyFilter3 implements Filter{
 			out.println("인증안됨");
 		}
 		}
-		
-		
 		System.out.println("필터3");
 	}
 

@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8001
   servlet:
     context-path: /
     encoding:
@@ -10,8 +10,8 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/security?serverTimezone=Asia/Seoul
-    username: root
+    url: jdbc:mysql://13.124.124.97:3306/security?serverTimezone=Asia/Seoul
+    username: ksh
     password: password
 
   jpa:

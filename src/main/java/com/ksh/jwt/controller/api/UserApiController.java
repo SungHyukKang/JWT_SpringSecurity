@@ -1,8 +1,6 @@
-package com.ksh.jwt.controller;
+package com.ksh.jwt.controller.api;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,25 +10,19 @@ import com.ksh.jwt.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 
-@RestController
 @RequiredArgsConstructor
-public class RestApiController {
-
+@RestController
+public class UserApiController {
+	
 	private final UserRepository userRepository;
 	private final BCryptPasswordEncoder bCryptpasswordEncoder;
 	
-	@GetMapping("home")
-	public String home() {
-		return "<h1>home</h1>";
-	}
-	@PostMapping("token")
-	public String token() {
-		return "<h1>token</h1>";
-	}
+	
+	//회원가입.
 	@PostMapping("join")
 	public String join(@RequestBody User user) {
-		user.setPassword(bCryptpasswordEncoder.encode(user.getPassword()));
-		user.setRoles("ROLE_USER");
+		user.setPassword(bCryptpasswordEncoder.encode(user.getPassword()));//비밀번호 암호화 .
+		user.setRoles("ROLE_USER");//해당 유저의 권한 
 		userRepository.save(user);
 		return "회원가입완료";
 	}
